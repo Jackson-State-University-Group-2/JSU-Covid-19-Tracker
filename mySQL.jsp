@@ -9,8 +9,8 @@
 <script type="text/javascript">
 
     function showDashboardPage(){
-        
-        window.open("/WebApplication1/DashboardPage.html","_self");
+        //alert("${param.name}");
+        window.open("/WebApplication1/DashboardPage.jsp?namePassed=${param.name}&emailPassed=${param.email}&dormPassed=${param.dorm}","_self");
         
     }
  </script>
@@ -88,11 +88,9 @@ span.psw {
     <h1> <center>THANK YOU FOR JOINING!</center> </h1>
 <% 
 
-
+/*
 try {
     Connection conn1 = null;
-    Connection conn2 = null;
-    Connection conn3 = null;
 // connect way #1
             String url1 = "jdbc:mysql://localhost:3306/covidtrackerdb?autoReconnect=true&useSSL=false";
             String user = "root";
@@ -115,9 +113,9 @@ try {
             ex.printStackTrace();
         }
 
-
+*/
 %>
-</font>
+
 <div>
     <b> <center>Welcome to our JSU Covid tracker!</center> </b>
     
