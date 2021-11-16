@@ -1,5 +1,14 @@
-
+<%@page import = "java.util.Properties"%>
 <html>
+    
+<script type="text/javascript">
+
+    function showEmailPage(){
+        
+        window.open("/WebApplication1/EmailPage.jsp","_self");
+        
+    }
+</script>
 
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
@@ -81,25 +90,11 @@ span.psw {
       ${param.dormPassed}
     </div>
     
-    <div>
-        <button type="button"> <b>SUBMIT POSITIVE COVID-19 RESULT</b></button>
-    </div>
+    
   
 </form>
+    
+<div> <button onclick="showEmailPage()" > <b>SUBMIT POSITIVE COVID-19 RESULT</b> </button> </div>
 
-</body>
-    
-    
-        
-        
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
+</body>  
 </html>
