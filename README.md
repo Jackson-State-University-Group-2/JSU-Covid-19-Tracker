@@ -9,9 +9,14 @@ An email will be sent out to all users with information regarding the student's 
 # MySQL Database Was Used To Design And Implement This Web-Data Application.
 
 # UPDATES
-(11/9/2021)\ TBA
+(11/15/2021)\
+-Added EmailPage.jsp\
+-Currently In Research Of A Free SMTP Server To Send Emails\
+-Attempted Using Twilio Sendgrid SMTP Server But Was Unsuccesful\
+
+(11/9/2021)\ 
 -Added Account Page\
 -Altered mySQL.jsp Page In Order To Pass Parameters Into Account Page\
--Added Covid-19 Report Button (Non-Functional At The Moment)\
+-Added Covid-19 Report Button (Non-Functional At The Moment)
 
 
