@@ -13,6 +13,7 @@ An email will be sent out to all users with information regarding the student's 
 -Added EmailPage.jsp\
 -Currently In Research Of A Free SMTP Server To Send Emails\
 -Attempted Using Twilio Sendgrid SMTP Server But Was Unsuccesful\
+-Switched Some HTML Code To Make Web Application More Efficient
 
 (11/9/2021)\ 
 -Added Account Page\
