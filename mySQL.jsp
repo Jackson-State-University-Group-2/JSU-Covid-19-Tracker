@@ -2,15 +2,16 @@
 <%@page import = "java.sql.DriverManager" %>
 <%@page import = "java.sql.ResultSet"%>
 <%@page import = "java.sql.SQLException" %>
-<%@ page import = "java.sql.Statement" %>
+<%@ page import = "java.sql.PreparedStatement" %>
 <%@page import = "java.util.Properties"%>
+
 <html>
 <!-- JAVA SCRIPT FOR REDIRECT-->
 <script type="text/javascript">
 
-    function showDashboardPage(){
+    function showIndexPage(){
         //alert("${param.name}");
-        window.open("/WebApplication1/DashboardPage.jsp?namePassed=${param.name}&emailPassed=${param.email}&dormPassed=${param.dorm}","_self");
+        window.open("/WebApplication1/index.jsp","_self");
         
     }
  </script>
@@ -80,42 +81,12 @@ span.psw {
 }
 </style>
 
-<head> 
-<title>Connection With JSU mySql Database</title> 
-</head> 
+<head> <title>Connection With JSU mySql Database</title> </head> 
+
 <body>
 
     <h1> <center>THANK YOU FOR JOINING!</center> </h1>
-<% 
-
-/*
-try {
-    Connection conn1 = null;
-// connect way #1
-            String url1 = "jdbc:mysql://localhost:3306/covidtrackerdb?autoReconnect=true&useSSL=false";
-            String user = "root";
-            String password = "Beeboy9!";
-            Class.forName("com.mysql.jdbc.Driver");
-            conn1 = DriverManager.getConnection(url1, user, password);
-            if (conn1 != null) {
-                System.out.println("Connected to the database covidtrackerdb1");
-            }
-
-            Statement st = conn1.createStatement();
-            ResultSet rs = st.executeQuery("select * from users");
-            
-            while (rs.next()) {
-                System.out.println(rs.getString("userDorm")); //gets the first column's rows.
-            }
-            
-        } catch (SQLException ex) {
-            System.out.println("An error occurred. Maybe user/password is invalid");
-            ex.printStackTrace();
-        }
-
-*/
-%>
-
+    
 <div>
     <b> <center>Welcome to our JSU Covid tracker!</center> </b>
     
@@ -124,21 +95,27 @@ String name = request.getParameter("name");
 String email = request.getParameter("email");
 String password = request.getParameter("psw");
 String dorm = request.getParameter("dorm");
+//POSTGRES INFORMATION
+String url = "jdbc:postgresql://localhost:5432/covidtrackerdb";
+String user = "postgres";
+String postgresPassword = "password";
+String INSERT_USERS_SQL = "INSERT INTO users" +"  (userName, userEmail, userPassword, userDorm) VALUES " + " (?, ?, ?, ?);";
 
-try
-{
-Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/covidtrackerdb?autoReconnect=true&useSSL=false", "root", "Beeboy9!");
-Statement st=conn.createStatement();
-
-int i=st.executeUpdate("insert into users(userName,userEmail,userPassword,userDorm)values('"+name+"','"+email+"','"+password+"','"+dorm+"')");
-//out.println("Data is successfully inserted!");*
-}
-catch(Exception e)
-{
-System.out.print(e);
-e.printStackTrace();
-}
+Class.forName("org.postgresql.Driver");
+try(Connection connection = DriverManager.getConnection(url, user, postgresPassword);
+        
+        PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL)){
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, email);
+            preparedStatement.setString(3, password);
+            preparedStatement.setString(4, dorm);
+            preparedStatement.execute();
+            
+            System.out.println("Data is successfully inserted!");
+        }catch(SQLException e){
+            System.out.print(e);
+            e.printStackTrace();
+            }
 %>
     
 
@@ -146,7 +123,7 @@ e.printStackTrace();
 
 <!-- ALL BUTTONS AND INTERACTIVES IN WEBSITE -->
 <div class="container">
-    <button onclick="showDashboardPage()" >DASHBOARD</button>
+    <button onclick="showIndexPage()" >LOGIN</button>
 </div>
 <!-- ALL BUTTONS AND INTERACTIVES IN WEBSITE -->
 </body> 
