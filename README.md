@@ -4,11 +4,20 @@ The purpose is to focus on activities involving people who may have been exposed
 In this branch you can find the 5 different webpages (as of now) written in HTML & Java.
 # DESCRIPTION
 This web application will allow users to create an account with us and report when they have been diagnosed with Covid-19.
-An email will be sent out to all users with information regarding the student's most frequent visits (Dorm Room & Class Rooms). 
+An email will be sent out to all users with information regarding the student's most frequent visits (Dorm Rooms). 
 
-# MySQL Database Was Used To Design And Implement This Web-Data Application.
 
 # UPDATES
+(11/27/2021)\
+-Implemente Email System Using Gmail SMTP Server\
+-Changed index.html To A .jsp\
+-Register Page Now Sends User Back To Login Instead Of Straight To Dashboard\
+-Added Feature: Email Notification System\
+-Fixed Login System\
+-MySQL Database Is No Longer Used Due To Server Issues\
+-Migrated Databse To PostgreSQL\
+-Implemented PostgreSQL
+
 (11/15/2021)\
 -Added EmailPage.jsp\
 -Currently In Research Of A Free SMTP Server To Send Emails\
